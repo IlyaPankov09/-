@@ -7,22 +7,25 @@ class Product:
         self.category = category
     def __str__(self):
         return f'{self.name}, {self.weidht}, {self.category}'
-class Shop:
+class Shop():
     __file_name = 'products.txt'
+
+    lines = []
+    product_names = []
     def get_products(self):
         file = open(__file_name, 'r')
         pprint(file.read())
         file.close()
-        # file.close()
 
     def __add__(self, *products):
         file = open(__file_name, 'a')
-        file.write(self.__file_name)
-        for name in products:
-            if name == self.name:
+        for file in products:
+            lines.uppend(file)
+            product_names.uppend(self.name)
+            if name in product_names:
                 print(f'Продукт {self.name} уже есть в магазине')
             else:
-                file.uppend(name)
+                file.write(f'\n{self.__file_name}')
 
 s1 = Shop()
 p1 = Product('Potato', 50.5, 'Vegetables')
