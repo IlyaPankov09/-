@@ -4,12 +4,9 @@ def custom_write(file_name, strings):
     strings_positions = {}
     with open(file_name, 'w', encoding= 'utf-8') as file:
         for line in strings:
-            enumLine = enumerate(line)
-            for key in enumLine:
-                j = key
+            current_position = file.tell()
             file.write(line +'\n')
-            byte = file.tell()
-            strings_positions[j, byte] = line
+            strings_positions[(len(strings_positions) + 1, current_position)] = line
     return strings_positions
 
 info = [
